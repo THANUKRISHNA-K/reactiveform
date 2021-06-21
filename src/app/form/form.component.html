@@ -1,0 +1,87 @@
+<br>
+<form class="myfor" [formGroup]="reactform">
+    <h2 class="form-label">Candidate's Details</h2>
+<div class="row g-3">
+    <div class="col-sm-4">
+        <label class="form-label">Firstname:</label>
+        <input type="text" placeholder="Firstname" name="fname" class="form-control" formControlName="fname" >
+    </div>
+    <div class="col-sm-4">
+        <label class="form-label">Lastname:</label>
+        <input type="text" placeholder="Lastname" name="lname" class="form-control" formControlName="lname" > 
+    </div>
+    <div class="col-sm-4">
+        <label class="form-label">ID:</label>
+        <input type="number" placeholder="ID" name="id" class="form-control"  formControlName="id" > 
+    </div>
+
+    <h2 class="form-label">Education</h2>
+    <div formArrayName="items">
+    <div class="row g-2" *ngFor="let control of itemsControls;let i=index" formGroupName="{{i}}" >
+       
+            <div class="col-sm-2">
+                <label class="form-label">Degree</label>
+                <input type="text" placeholder="Degree" name="fnam" class="form-control" formControlName="deg"  >
+            </div>
+            <div class="col-sm-5">
+                <label class="form-label">Institution</label>
+                <input type="text" placeholder="Institution" name="lname" class="form-control" formControlName="ins" > 
+            </div>
+            <div class="col-sm-2">
+                <label class="form-label">Year of passing</label>
+                <input type="number" placeholder="Year of passing " name="id" class="form-control" formControlName="year"  > 
+            </div>
+            <div class="col-sm-2">
+                <label class="form-label">Percentage</label>
+                <input type="number" placeholder="%" name="id" class="form-control" formControlName="percent"   > 
+            </div> 
+             <div class="col-sm-1"  >
+                <label class="form-label">Delete</label>
+                 <button class="btn btn-danger" (click)="removeuser(i)">REMOVE</button>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <div class="col-sm-2"> <button class="btn btn-primary"  (click)="adduser()">ADD</button></div>
+
+
+    <h2 class="form-label">Work Experiences</h2>
+    <div formArrayName="Experiences">
+    <div class="row g-2" *ngFor="let controls of ExpsControls;let j=index" formGroupName="{{j}}" >
+       
+            <div class="col-sm-2">
+                <label class="form-label">Designation</label>
+                <input type="text" placeholder="Designation" name="des" class="form-control" formControlName="Des"  >
+            </div>
+            <div class="col-sm-6">
+                <label class="form-label">Company</label>
+                <input type="text" placeholder="Company" name="com" class="form-control" formControlName="com" > 
+            </div>
+            <div class="col-sm-3">
+                <label class="form-label">Year of Experience</label>
+                <input type="number" placeholder="Years" name="yea" class="form-control" formControlName="exp"  > 
+            </div>
+             <div class="col-sm-1"  >
+                <label class="form-label">Delete</label>
+                 <button class="btn btn-danger" (click)="removeexp(j)">REMOVE</button>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <div class="col-sm-2"> <button class="btn btn-primary" (click)="addexp()">ADD</button></div>
+    <button class="btn btn-primary" [disabled]="reactform.invalid" (click)="submit()">Submit</button>
+   
+       
+   
+</div>
+</form>
+
+
+
+
